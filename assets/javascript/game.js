@@ -43,6 +43,7 @@ $(document).ready(function() {
         playersKeys:["Kenobi", "Skywalker", "Maul", "Sidious"],
         enemies:[],
         wins:0,
+        vs:"assets/images/vs.png",
         character:{},
         characterAttackPowerInc:0,
         defender:{},
@@ -55,12 +56,25 @@ $(document).ready(function() {
                     return
                 }
                 else if (!this.defenderChosen){
-                   //"need to select defender" 
+
+                   //"need to select defender but first i will make sure it is not the same as the 
+                   //current character" 
                     if (this.character.lastName!=this.players[playerId].lastName){
-                    this.defender=this.players[playerId];
-                    $("."+this.players[playerId].lastName+"-enemy").fadeOut("slow");
-                    $("."+this.players[playerId].lastName+"-defender").fadeIn("slow");
-                    this.defenderChosen=true
+
+                        this.defender=this.players[playerId];
+                        //will hide it in enemy list
+                        $("."+this.players[playerId].lastName+"-enemy").fadeOut("slow");
+                        //then will recreate the html in the game session so character and defender are
+                        //next to each other:
+                        $(".battle-space").append("<div class='col-sm-1 col-md-1 battle-vs'></div>")
+                        $(".battle-vs").html("<img src="+this.vs+">")
+                        $(".battle-space").append("<div class='col-sm-1 col-md-1 padding'></div>")
+                        $(".battle-space").append("<div class='col-sm-6 col-md-3 defender'></div>")
+                        $(".defender").html("<div class='col-sm-6 col-md-3'> <img src="+this.defender.src+"> </div>")
+                        $(".battle-space").append("<div class='col-sm-1 col-md-1 defender-stats'></div>")
+
+                        //  $("."+this.players[playerId].lastName+"-defender").fadeIn("slow");
+                        this.defenderChosen=true
                     }
 
                 }
@@ -78,6 +92,7 @@ $(document).ready(function() {
                     }
                     else{
                         $("."+this.players[i].lastName+"-player").fadeOut("slow");
+                        $("."+this.players[i].lastName+"-player").remove()
                         $("."+this.players[i].lastName+"-enemy").fadeIn("slow");
                         this.enemies.push(this.players[i])
                     }
@@ -98,15 +113,22 @@ $(document).ready(function() {
 
                 if (this.character.healhPoint<=0){
                     this.character.defeated=true;
-                    console.log("You Lost the game Bitch!")
+                    console.log("You Lost the game !")
                 }
                 else if (this.defender.healhPoint<=0){
                     this.defender.defeated=true;
-                    $("."+this.defender.lastName+"-defender").fadeOut("slow");
+                    $(".battle-vs").remove()
+                    $(".padding").remove()
+                    $(".defender").remove()
+                    $(".defender-stats").remove()
+
+
+
+                  //  $("."+this.defender.lastName+"-defender").fadeOut("slow");
                     this.defenderChosen=false;
                     this.wins++
                     if(this.wins==this.enemies.length){
-                        console.log("you won Bitch")
+                        console.log("you won ")
                     }
                 }
                 console.log(this.character.healhPoint)
