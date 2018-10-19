@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Hangman: The Game</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Bootstrap File -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+
+</head>
+
+<body>
+    <script src="assets/javascript/game.js"></script>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-md-4">
+                <div id="logo">
+                    <img id="logo-image" src="assets/images/logo.png" alt="Logo">
+                </div>
+            </div>
+            <div class="col-sm-4 col-md-4">
+                <h1>The Game</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-3 clicked Kenobi-player" id="Kenobi">
+                <img src="assets/images/obi.png" alt="Obi-Wan Kenobi">
+            </div>
+            <div class="col-sm-6 col-md-3 clicked Skywalker-player" id="Skywalker">
+                <img src="assets/images/skywalker.png" alt="Luke skywalker">
+            </div>
+            <div class="col-sm-6 col-md-3 clicked Maul-player" id="Maul">
+                <img src="assets/images/maul.png" alt="Darth Maul">
+            </div>   
+            <div class="col-sm-6 col-md-3 clicked Sidious-player" id="Sidious">
+                <img src="assets/images/sidious.png" alt="Darth Sidious">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <h2>Your Character</h2>
+            </div>
+        </div>
+            
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <h2>Enemies Available to Attack</h2>
+            </div>
+            <div class="col-sm-6 col-md-3 clicked Kenobi-enemy hidden" id="Kenobi">
+                <img src="assets/images/obi.png" alt="Obi-Wan Kenobi">
+            </div>
+            <div class="col-sm-6 col-md-3 clicked Skywalker-enemy hidden" id="Skywalker">
+                <img src="assets/images/skywalker.png" alt="Luke skywalker">
+            </div>
+            <div class="col-sm-6 col-md-3 clicked Maul-enemy hidden" id="Maul">
+                    <img src="assets/images/maul.png" alt="Darth Maul">
+                </div>   
+            <div class="col-sm-6 col-md-3 clicked Sidious-enemy hidden" id="Sidious">
+                <img src="assets/images/sidious.png" alt="Darth Sidious">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <h2>Fight Section</h2>
+            </div>
+            <div class="col-sm-12 col-md-12">
+                    <button class="btn">Attack!</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <h2>Defender</h2>
+            </div>
+
+            <div class="col-sm-6 col-md-3 Kenobi-defender hidden" id="Kenobi">
+                <img src="assets/images/obi.png" alt="Obi-Wan Kenobi">
+            </div>
+            <div class="col-sm-6 col-md-3 Skywalker-defender hidden" id="Skywalker">
+                <img src="assets/images/skywalker.png" alt="Luke skywalker">
+            </div>
+            <div class="col-sm-6 col-md-3 Maul-defender hidden" id="Maul">
+                    <img src="assets/images/maul.png" alt="Darth Maul">
+                </div>   
+            <div class="col-sm-6 col-md-3 Sidious-defender hidden" id="Sidious">
+                <img src="assets/images/sidious.png" alt="Darth Sidious">
+            </div>
+        </div>
+    </div>
+
+
+</body>
