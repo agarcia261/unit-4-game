@@ -7,56 +7,61 @@ $(document).ready(function() {
                 lastName:"Kenobi",
                 healhPoint:120,
                 attackPower:8,
-                counterAttack:10
+                counterAttack:10,
+                src:"assets/images/obi.png",
+                defeated:false
             },
             luke = {
                 firstName:"Luke",
                 lastName:"Skywalker",
                 healhPoint:100,
-                attackPower:6,
-                counterAttack:5
+                attackPower:10,
+                counterAttack:5,
+                src:"assets/images/skywalker.png",
+                defeated:false
             },
             maul = {
                 firstName:"Darth",
                 lastName:"Maul",
                 healhPoint:180,
                 attackPower:6,
-                counterAttack:25
+                counterAttack:25,
+                src:"assets/images/maul.png",
+                defeated:false
             },
             sidious = {
                 firstName:"Darth",
                 lastName:"Sidious",
                 healhPoint:150,
-                attackPower:6,
-                counterAttack:20
+                attackPower:7,
+                counterAttack:20,
+                src:"assets/images/sidious.png",
+                defeated:false
             }
 
         ],
         playersKeys:["Kenobi", "Skywalker", "Maul", "Sidious"],
         enemies:[],
+        wins:0,
         character:{},
         characterAttackPowerInc:0,
         defender:{},
         characterChosen:false,
         defenderChosen:false,
-        playerMgt: function(id){
-            console.log("getting here")
-                
+        playerMgt: function(id){                
             var playerId=this.playersKeys.indexOf(id)
-
-
-
             if (this.characterChosen){
                 if(this.defenderChosen){
                     return
                 }
-                else{
+                else if (!this.defenderChosen){
                    //"need to select defender" 
-                   console.log(playerId)                    
-
-                        this.defender=this.players[playerId];
-                        $("."+this.players[playerId].lastName+"-enemy").fadeOut("slow");
-                        $("."+this.players[playerId].lastName+"-defender").fadeIn("slow");
+                    if (this.character.lastName!=this.players[playerId].lastName){
+                    this.defender=this.players[playerId];
+                    $("."+this.players[playerId].lastName+"-enemy").fadeOut("slow");
+                    $("."+this.players[playerId].lastName+"-defender").fadeIn("slow");
+                    this.defenderChosen=true
+                    }
 
                 }
             }
@@ -68,6 +73,7 @@ $(document).ready(function() {
                     
                     if(i==playerId){
                         this.character=this.players[playerId];
+                        this.characterAttackPowerInc=this.players[playerId].attackPower
 
                     }
                     else{
@@ -76,20 +82,58 @@ $(document).ready(function() {
                         this.enemies.push(this.players[i])
                     }
                 }
-                this.characterChosen=true;
                 
+                $(".player-stats").attr("class","col-sm-1 col-md-1 player-stats");
+                $("."+this.players[playerId].lastName+"-vs").fadeIn("slow");
 
 
+                this.characterChosen=true;
             }
         },
+        attack:function(){
+            if (this.defenderChosen && !this.character.defeated){
+                this.character.healhPoint=this.character.healhPoint-this.defender.counterAttack;
+                this.character.attackPower=this.character.attackPower+this.characterAttackPowerInc
+                this.defender.healhPoint=this.defender.healhPoint-this.character.attackPower;
+
+                if (this.character.healhPoint<=0){
+                    this.character.defeated=true;
+                    console.log("You Lost the game Bitch!")
+                }
+                else if (this.defender.healhPoint<=0){
+                    this.defender.defeated=true;
+                    $("."+this.defender.lastName+"-defender").fadeOut("slow");
+                    this.defenderChosen=false;
+                    this.wins++
+                    if(this.wins==this.enemies.length){
+                        console.log("you won Bitch")
+                    }
+                }
+                console.log(this.character.healhPoint)
+                console.log(this.defender.healhPoint)
+            }
+            else if (this.character.defeated){
+                alert("You Lost the game. Please restart to play again")
+            }
+            else if (this.wins==this.enemies.length){
+                alert("You Lost the game. Please restart to play again")
+            }
+            else {
+                alert("Please select a defender")
+            }
+        }
 
     }  
     
 
 
     $(".clicked").click(function(){
-        console.log(this.id)
         game.playerMgt(this.id)   
+
+    });
+
+    $(".attack").click(function(){
+        game.attack()   
 
     });
 
