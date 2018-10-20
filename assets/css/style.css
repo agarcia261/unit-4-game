@@ -1,6 +1,5 @@
 body{
     background-color: black;
-    background-image: image("/assets/images/background.png")
 }
 header{
     width:100%;
@@ -27,3 +26,18 @@ header{
 h1{
     color: white;
 }
+.black{
+    background-color: black;
+}
+.card-img{
+    width: auto;
+    height: 250px;
+}
+.border{
+    border-style: dashed;
+    border-color: black;
+}
+.zindex{
+    z-index: 10;
+}
+

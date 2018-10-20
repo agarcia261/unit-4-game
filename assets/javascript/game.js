@@ -66,13 +66,16 @@ $(document).ready(function() {
                         $("."+this.players[playerId].lastName+"-enemy").fadeOut("slow");
                         //then will recreate the html in the game session so character and defender are
                         //next to each other:
-                        $(".battle-space").append("<div class='col-sm-1 col-md-1 battle-vs'></div>")
-                        $(".battle-vs").html("<img src="+this.vs+">")
-                        $(".battle-space").append("<div class='col-sm-1 col-md-1 padding'></div>")
-                        $(".battle-space").append("<div class='col-sm-6 col-md-3 defender'></div>")
-                        $(".defender").html("<div class='col-sm-6 col-md-3'> <img src="+this.defender.src+"> </div>")
-                        $(".battle-space").append("<div class='col-sm-1 col-md-1 defender-stats'></div>")
+                        var card="<div class='card black'><div class='card-body'><h4 class='card-title'>Defender</h4><p class='card-text defender-p'>Health: "+this.defender.healhPoint+"</p></div></div>"
 
+                        $(".battle-space").append("<div class='col-sm-2 col-md-2 battle-vs '></div>")
+                        $(".battle-vs").html("<img src="+this.vs+">")
+                        $(".battle-space").append("<div class='col-sm-6 col-md-3 defender zindex'></div>")
+                        $(".defender").html("<div class='col-sm-6 col-md-3'> <img src="+this.defender.src+"> </div>")
+                        $(".battle-space").append(
+                            "<div class='col-sm-2 col-md-2 defender-stats'>"+card+"</div>")
+
+                        
                         //  $("."+this.players[playerId].lastName+"-defender").fadeIn("slow");
                         this.defenderChosen=true
                     }
@@ -97,8 +100,9 @@ $(document).ready(function() {
                         this.enemies.push(this.players[i])
                     }
                 }
-                
-                $(".player-stats").attr("class","col-sm-1 col-md-1 player-stats");
+                $(".player-p").text("Health: "+this.character.healhPoint)
+
+                $(".player-stats").attr("class","col-sm-2 col-md-2 player-stats");
                 $("."+this.players[playerId].lastName+"-vs").fadeIn("slow");
 
 
@@ -110,6 +114,9 @@ $(document).ready(function() {
                 this.character.healhPoint=this.character.healhPoint-this.defender.counterAttack;
                 this.character.attackPower=this.character.attackPower+this.characterAttackPowerInc
                 this.defender.healhPoint=this.defender.healhPoint-this.character.attackPower;
+                $(".player-p").text("Health: "+this.character.healhPoint)
+                $(".defender-p").text("Health: "+this.defender.healhPoint)
+
 
                 if (this.character.healhPoint<=0){
                     this.character.defeated=true;

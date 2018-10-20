@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Hangman: The Game</title>
+  <title>Star Wars</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Bootstrap File -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -20,58 +21,92 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-sm-8 col-md-4">
+            <div class="col-sm-8 col-md-4 ">
                 <div id="logo">
                     <img id="logo-image" src="assets/images/logo.png" alt="Logo">
                 </div>
             </div>
-            <div class="col-sm-4 col-md-4">
+            <div class="col-sm-4 col-md-8 ">
                 <h1>The Game</h1>
             </div>
         </div>
-        <div class="row battle-space">
-            <div class="col-sm-1 col-md-1 player-stats hidden">
+        <div class="row battle-space ">
+            <div class="col-sm-2 col-md-2  player-stats hidden">
+                    <div class="card black">
+                            <div class="card-body">
+                              <h4 class="card-title">Your Character</h4>
+                              <p class="card-text player-p">Health: 120</p>
+                            </div>
+                    </div>
             </div>
 
-            <div class="col-sm-6 col-md-3 clicked Kenobi-player Kenobi-defender" id="Kenobi">
+            <div class="col-sm-6 col-md-3  clicked Kenobi-player Kenobi-defender zindex" id="Kenobi">
                 <img src="assets/images/obi.png" alt="Obi-Wan Kenobi">
             </div>
 
-            <div class="col-sm-6 col-md-3 clicked Skywalker-player Skywalker-defender" id="Skywalker">
+            <div class="col-sm-6 col-md-3  clicked Skywalker-player Skywalker-defender zindex" id="Skywalker">
                 <img src="assets/images/skywalker.png" alt="Luke skywalker">
             </div>
 
-            <div class="col-sm-6 col-md-3 clicked Maul-player Maul-defender" id="Maul">
+            <div class="col-sm-6 col-md-3  clicked Maul-player Maul-defender zindex" id="Maul">
                 <img src="assets/images/maul.png" alt="Darth Maul">
             </div>
  
-            <div class="col-sm-6 col-md-3 clicked Sidious-player Sidious-defender" id="Sidious">
+            <div class="col-sm-6 col-md-3 clicked  Sidious-player Sidious-defender zindex" id="Sidious">
                 <img src="assets/images/sidious.png" alt="Darth Sidious">
             </div>
 
         </div>
 
-        <div class="row">
+        <!-- <div class="row border">
             <div class="col-sm-12 col-md-12">
                 <h2>Your Character</h2>
             </div>
-        </div>
+        </div> -->
             
         <div class="row">
             <div class="col-sm-12 col-md-12">
                 <h2>Enemies Available to Attack</h2>
             </div>
             <div class="col-sm-6 col-md-3 clicked Kenobi-enemy hidden" id="Kenobi">
-                <img src="assets/images/obi.png" alt="Obi-Wan Kenobi">
+
+                    <div class="card black">
+                            <img class="card-img-top card-img" src="assets/images/obi.png" alt="Obi-Wan Kenobi">
+                            <div class="card-body">
+                              <h4 class="card-title">Obi-Wan Kenobi</h4>
+                              <p class="card-text">Health: 120</p>
+                            </div>
+                    </div>
             </div>
             <div class="col-sm-6 col-md-3 clicked Skywalker-enemy hidden" id="Skywalker">
-                <img src="assets/images/skywalker.png" alt="Luke skywalker">
+                
+                <div class="card black">
+                        <img class="card-img-top card-img" src="assets/images/skywalker.png" alt="Luke skywalker">
+                        <div class="card-body">
+                          <h4 class="card-title">Luke skywalker</h4>
+                          <p class="card-text">Health: 100</p>
+                        </div>
+                </div>
             </div>
             <div class="col-sm-6 col-md-3 clicked Maul-enemy hidden" id="Maul">
-                    <img src="assets/images/maul.png" alt="Darth Maul">
+                    
+                    <div class="card black">
+                            <img class="card-img-top card-img" src="assets/images/maul.png" alt="Darth Maul">
+                            <div class="card-body">
+                              <h4 class="card-title">Darth Maul</h4>
+                              <p class="card-text">Health: 150</p>
+                            </div>
+                    </div>
                 </div>   
             <div class="col-sm-6 col-md-3 clicked Sidious-enemy hidden" id="Sidious">
-                <img src="assets/images/sidious.png" alt="Darth Sidious">
+                    <div class="card black">
+                            <img class="card-img-top card-img" src="assets/images/sidious.png" alt="Darth Sidious">
+                            <div class="card-body">
+                              <h4 class="card-title">Darth Maul</h4>
+                              <p class="card-text">Health: 150</p>
+                            </div>
+                    </div>
+                
             </div>
         </div>
 
@@ -89,3 +124,5 @@
 
 
 </body>
+
+</html>
