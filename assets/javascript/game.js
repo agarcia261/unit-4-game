@@ -43,6 +43,7 @@ $(document).ready(function() {
         playersKeys:["Kenobi", "Skywalker", "Maul", "Sidious"],
         enemies:[],
         wins:0,
+        wongame:false,
         vs:"assets/images/vs.png",
         character:{},
         characterAttackPowerInc:0,
@@ -135,17 +136,15 @@ $(document).ready(function() {
                     this.defenderChosen=false;
                     this.wins++
                     if(this.wins==this.enemies.length){
-                        console.log("you won ")
+                        this.wongame=true;
                     }
                 }
-                console.log(this.character.healhPoint)
-                console.log(this.defender.healhPoint)
             }
             else if (this.character.defeated){
                 alert("You Lost the game. Please restart to play again")
             }
-            else if (this.wins==this.enemies.length){
-                alert("You Lost the game. Please restart to play again")
+            else if (this.wongame){
+                alert("You won already. Relax and Enjoy!")
             }
             else {
                 alert("Please select a defender")
@@ -162,7 +161,9 @@ $(document).ready(function() {
     });
 
     $(".attack").click(function(){
-        game.attack()   
+  
+            game.attack()  
+        
 
     });
 
