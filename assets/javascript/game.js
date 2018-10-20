@@ -45,6 +45,8 @@ $(document).ready(function() {
         wins:0,
         wongame:false,
         vs:"assets/images/vs.png",
+        wonImg:"assets/images/ship.png",
+        gameover:"assets/images/gameover.png",
         character:{},
         characterAttackPowerInc:0,
         defender:{},
@@ -75,6 +77,10 @@ $(document).ready(function() {
                         $(".defender").html("<div class='col-sm-6 col-md-3'> <img src="+this.defender.src+"> </div>")
                         $(".battle-space").append(
                             "<div class='col-sm-2 col-md-2 defender-stats'>"+card+"</div>")
+                        $(".defender-show").removeClass("hidden")
+                        $(".defender-hidden").addClass("hidden")
+
+
 
                         
                         //  $("."+this.players[playerId].lastName+"-defender").fadeIn("slow");
@@ -102,6 +108,9 @@ $(document).ready(function() {
                     }
                 }
                 $(".player-p").text("Health: "+this.character.healhPoint)
+                $(".player-hidden").addClass("hidden")
+                $(".player-show").removeClass("hidden")
+
 
                 $(".player-stats").attr("class","col-sm-2 col-md-2 player-stats");
                 $("."+this.players[playerId].lastName+"-vs").fadeIn("slow");
@@ -121,7 +130,9 @@ $(document).ready(function() {
 
                 if (this.character.healhPoint<=0){
                     this.character.defeated=true;
-                    console.log("You Lost the game !")
+                    $(".gameover-show").removeClass("hidden")
+                    $(".gameover-hidden").addClass("hidden")
+                    console.log("Game Over!")
                 }
                 else if (this.defender.healhPoint<=0){
                     this.defender.defeated=true;
@@ -137,6 +148,12 @@ $(document).ready(function() {
                     this.wins++
                     if(this.wins==this.enemies.length){
                         this.wongame=true;
+                        $(".battle-space").append("<div class='col-sm-2 col-md-7 battle-won '></div>")
+                        $(".battle-won").html("<h1>You WON!!!</h1><img src="+this.wonImg+">")
+                        $(".game-win").removeClass("hidden")
+                        $(".gameover-hidden").addClass("hidden")
+
+
                     }
                 }
             }
@@ -163,8 +180,9 @@ $(document).ready(function() {
     $(".attack").click(function(){
   
             game.attack()  
-        
-
     });
+    $(".restart").click(function(){
+        location.reload();  
+});
 
 });

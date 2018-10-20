@@ -13,6 +13,8 @@
 
   <!-- JQuery -->
   <script src="https://code.jquery.com/jquery.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 </head>
 
@@ -27,11 +29,11 @@
                 </div>
             </div>
             <div class="col-sm-4 col-md-8 ">
-                <h1>The Game</h1>
+             
             </div>
         </div>
         <div class="row battle-space ">
-            <div class="col-sm-2 col-md-2  player-stats hidden">
+            <div class="col-sm-2 col-md-2  player-show player-stats hidden">
                     <div class="card black">
                             <div class="card-body">
                               <h4 class="card-title">Your Character</h4>
@@ -42,32 +44,39 @@
 
             <div class="col-sm-6 col-md-3  clicked Kenobi-player Kenobi-defender zindex" id="Kenobi">
                 <img src="assets/images/obi.png" alt="Obi-Wan Kenobi">
+                <h4 class="player-hidden">Health Point: 120</h4>
             </div>
 
             <div class="col-sm-6 col-md-3  clicked Skywalker-player Skywalker-defender zindex" id="Skywalker">
                 <img src="assets/images/skywalker.png" alt="Luke skywalker">
+                <h4 class="player-hidden">Health Point: 100</h4>
+
             </div>
 
             <div class="col-sm-6 col-md-3  clicked Maul-player Maul-defender zindex" id="Maul">
                 <img src="assets/images/maul.png" alt="Darth Maul">
+                <h4 class="player-hidden">Health Point: 180</h4>
+
             </div>
  
             <div class="col-sm-6 col-md-3 clicked  Sidious-player Sidious-defender zindex" id="Sidious">
                 <img src="assets/images/sidious.png" alt="Darth Sidious">
+                <h4 class="player-hidden">Health Point: 150</h4>
+
             </div>
 
         </div>
-
-        <!-- <div class="row border">
-            <div class="col-sm-12 col-md-12">
-                <h2>Your Character</h2>
+        <div class="row player-hidden margin-top">
+            <div class="col-sm-12 col-md-12 player-show enemies-heading">
+                <h3>Please select your Player!</h3>
             </div>
-        </div> -->
+        </div>
             
         <div class="row">
-            <div class="col-sm-12 col-md-12">
-                <h2>Enemies Available to Attack</h2>
+            <div class="col-sm-12 col-md-12 player-show enemies-heading hidden">
+                <h3>Enemies Available to Attack</h3>
             </div>
+            
             <div class="col-sm-6 col-md-3 clicked Kenobi-enemy hidden" id="Kenobi">
 
                     <div class="card black">
@@ -109,14 +118,29 @@
                 
             </div>
         </div>
+        <div class="row player-show defender-hidden margin-top hidden">
+                <div class="col-sm-12 col-md-12 player-show enemies-heading">
+                    <h3>Please select the Defender!</h3>
+                </div>
+        </div>
 
-        <div class="row">
-            <div class="col-sm-12 col-md-12">
+        <div class="row fight-control gameover-hidden defender-show hidden">
+            <div class="col-sm-12 col-md-12 ">
                 <h2>Fight Section</h2>
             </div>
             <div class="col-sm-12 col-md-12">
-                    <button class="btn attack">Attack!</button>
+                    <button class="btn btn-lg attack">Attack!</button>
             </div>
+        </div>
+
+        <div class="row fight-control ">
+            <div class="col-sm-12 col-md-12 gameover-show hidden ">
+                    <img src="assets/images/gameover.png">
+            </div>
+            <div class="col-sm-12 col-md-12 gameover-show game-win hidden">
+                    <button class="btn btn-lg restart">Restart!</button>
+            </div>
+
         </div>
 
 
